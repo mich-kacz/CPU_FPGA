@@ -31,17 +31,17 @@ END CE869_CPU_SYS;
 ARCHITECTURE STCTR_CE869_CPU_SYS OF CE869_CPU_SYS IS  --Top level Structural instantiations of all components in the design
 
 BEGIN
-  --Instantiation of the CPU
-  cpu_instance : entity work.CE869_CPU
-    PORT MAP (
-      -- clk => ,
-      -- reset => ,         
-      -- data_input => ,
-      -- data_output => 
-      );
+--  --Instantiation of the CPU
+--  cpu_instance : entity work.CE869_CPU
+--    PORT MAP (
+--      -- clk => ,
+--      -- reset => ,         
+--      -- data_input => ,
+--      -- data_output => 
+--      );
   
-  --Instantiation of the Seven Segment Display Driver
-  svn_sgmnt_drv_instance : entity work.SVN_SGMNT_DRV
-    PORT MAP (
-             );
+--  --Instantiation of the Seven Segment Display Driver
+--  svn_sgmnt_drv_instance : entity work.SVN_SGMNT_DRV
+--    PORT MAP (
+--             );
 END STCTR_CE869_CPU_SYS;
