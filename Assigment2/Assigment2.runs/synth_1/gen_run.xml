@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1709056223">
-  <File Type="PA-TCL" Name="CE869_CPU.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="CE869_CPU_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="CE869_CPU_reports.tcl"/>
-  <File Type="RDS-RDS" Name="CE869_CPU.vds"/>
-  <File Type="RDS-UTIL" Name="CE869_CPU_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="CE869_CPU_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="CE869_CPU.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="CE869_CPU_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="CE869_CPU_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1709219084" LaunchIncrCheckpoint="C:/Users/mk23561/Assigment2/Assigment2.srcs/utils_1/imports/synth_1/CE869_CPU.dcp">
+  <File Type="PA-TCL" Name="CE869_CPU_SYS.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="CE869_CPU_SYS_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="CE869_CPU_SYS_reports.tcl"/>
+  <File Type="RDS-RDS" Name="CE869_CPU_SYS.vds"/>
+  <File Type="RDS-UTIL" Name="CE869_CPU_SYS_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="CE869_CPU_SYS_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="CE869_CPU_SYS.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="CE869_CPU_SYS_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="CE869_CPU_SYS_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/ROM.vhd">
@@ -25,9 +25,26 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PPRDIR/../../Assignments/23-24_CE869_kaczmarczyk_michal_p/assignment1.srcs/sources_1/new/frequency_divider.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Assignments/23-24_CE869_kaczmarczyk_michal_p/assignment1.srcs/sources_1/new/one_digit.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../Assignments/23-24_CE869_kaczmarczyk_michal_p/assignment1.srcs/sources_1/new/four_digits.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/CE869_CPU_SYS.vhd">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
@@ -116,7 +133,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="CE869_CPU"/>
+      <Option Name="TopModule" Val="CE869_CPU_SYS"/>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>
@@ -134,6 +151,14 @@
   </FileSet>
   <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
     <Filter Type="Utils"/>
+    <File Path="C:/Users/mk23561/Assigment2/Assigment2.srcs/utils_1/imports/synth_1/CE869_CPU.dcp">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedInSteps" Val="synth_1"/>
+        <Attr Name="AutoDcp" Val="1"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>

@@ -37,6 +37,8 @@ end IR_MUX;
 
 architecture Behavioral of IR_MUX is
 
+
+
 begin
 
 

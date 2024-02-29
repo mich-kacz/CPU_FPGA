@@ -69,9 +69,11 @@ BEGIN
 rom_instance : entity work.rom
   PORT MAP (                                                          
               clk  => clk,
-        adress => "0000",
+        adress => data_input(3 downto 0),
         output => test
            );
+           
+ data_output(9 downto 0) <= test;
 
 -- In this process we can implement the changes to program counter, instruction register 
 -- and any other internal signals based on the CPU state
