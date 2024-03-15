@@ -15,7 +15,7 @@ ARCHITECTURE BHV_ALU OF ALU IS
 BEGIN
 
 WITH op SELECT
-alu_result <= (a) WHEN "000", --HALT
+alu_result <= (a) WHEN "000", --PASS
               (not a) WHEN "001", --NOT
               (std_logic_vector(UNSIGNED(a)+1)) WHEN "010", --INC
               (std_logic_vector(UNSIGNED(a)-1)) WHEN "011", --DEC

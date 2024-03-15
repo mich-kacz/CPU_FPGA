@@ -49,7 +49,7 @@ process(clk)
 begin
 
 if ZE = '1' then
-Zstatus <= nor input;
+Zstatus <= NOR (input);
 end if;
 
 end process;

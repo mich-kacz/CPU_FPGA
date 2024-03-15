@@ -41,10 +41,10 @@ Port
     reset : in std_logic;
     IR : in std_logic_vector (9 downto 0);
     ZStatus : in std_logic; -- ZStatus flag
-    IRLoad : out std_logic;
-    PCLoad : out std_logic;
-    IRMux : out std_logic;
-    IE : out std_logic_vector(1 downto 0);
+    IRLoad : out std_logic; -- Integral register enable(load next intsruction)
+    PCLoad : out std_logic; --Program counter enable (load next counter state)
+    IRMux : out std_logic; --IR Mux select
+    IE : out std_logic_vector(1 downto 0); --RF_MUX_SELECT
     WA : out unsigned(1 downto 0); --Write address
     RAA : out unsigned(1 downto 0); --Read address A
     RBA : out unsigned(1 downto 0); --Read address B
@@ -79,7 +79,7 @@ architecture Behavioral of CONTROL_UNIT is
     
 begin
 process(clk)
-variable state : unsigned (1 downto 0) := (others => '0');
+variable state : unsigned (2 downto 0) := (others => '0');
 begin
 
 
@@ -88,15 +88,99 @@ WHEN 0 => --start
     IRLoad <= '0';
     PCLoad <= '0';
     state := state + 1;
-WHEN 1 => --fetch
+    
+WHEN 1 => --fetch IR
     IRLoad <= '1';
-    PCLoad <= '1';
-    state := state + 1;
-WHEN 2 => --decode
-    IRLoad <= '0';
     PCLoad <= '0';
     state := state + 1;
-WHEN 3 => --execute
+    
+WHEN 2 => --driveMux and counter
+    IRLoad <= '0';
+    PCLoad <= '1';
+    CASE IR is
+    WHEN JN =>
+        IF ZStatus = '1' then
+            IRMux <= '0';
+        ELSIF ZStatus = '0' THEN
+            IRMux <= '1';
+        END IF;
+     WHEN JMP => 
+        IRMux <= '0';
+     WHEN JNZ =>
+        IF ZStatus = '1' then
+            IRMux <= '1';
+        ELSIF ZStatus = '0' THEN
+            IRMux <= '0';
+        else
+            IRMux <= '1';
+        END IF;
+     END CASE;
+    state := state + 1;
+    
+WHEN 3 => --decode
+    IRLoad <= '0';
+    PCLoad <= '0';
+    CASE IR is
+    WHEN HALT =>
+        IE <= "00";
+        WE <= '0';
+        RAE <= '0';
+        RBE <= '0';
+        op <= "000";
+        E <= '0';
+        ZE <= '0';
+    WHEN MOV => --Writing register to register
+        IE <= "10";
+        WE <= '1';
+        RAE <= '1';
+        RBE <= '0';
+        op <= "000";
+        WA <= UNSIGNED(IR(3 downto 2)); --Write address
+        RAA <= UNSIGNED(IR(1 downto 0)); --Read address A
+        E <= '0';
+        ZE <= '0';
+    WHEN IN_in => --Writing register to register
+        IE <= "01";
+        WE <= '1';
+        RAE <= '0';
+        RBE <= '0';
+        op <= "000";
+        WA <= UNSIGNED(IR(1 downto 0)); --Write address
+        E <= '0';
+        ZE <= '0';
+    WHEN OUT_in => --Writing register to register
+        IE <= "00";
+        WE <= '0';
+        RAE <= '1';
+        RBE <= '0';
+        op <= "000";
+        RAA <= UNSIGNED(IR(1 downto 0)); --Read address A
+        E <= '1';
+        ZE <= '0';
+    WHEN NOT_in => --Writing register to register
+        IE <= "10";
+        WE <= '1';
+        RAE <= '1';
+        RBE <= '0';
+        op <= "001";
+        RAA <= UNSIGNED(IR(1 downto 0)); --Read address A
+        WA <= UNSIGNED(IR(3 downto 2)); --Write address
+        E <= '0';
+        ZE <= '1';
+    WHEN LT => --Writing register to register TODO
+        IE <= "10";
+        WE <= '1';
+        RAE <= '1';
+        RBE <= '0';
+        op <= "001";
+        RAA <= UNSIGNED(IR(1 downto 0)); --Read address A
+        WA <= UNSIGNED(IR(3 downto 2)); --Write address
+        E <= '0';
+        ZE <= '1';
+    END CASE;
+    state := state + 1;
+ 
+WHEN 4 => --execute
     IRLoad <= '0';
     PCLoad <= '0';
     state := state + 1;
