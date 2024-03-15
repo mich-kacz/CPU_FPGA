@@ -33,11 +33,25 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity ZERO_FLAG_REG is
 --  Port ( );
+
+PORT(
+clk : IN std_logic; --clock signal
+ZE : IN std_logic; --Z control enable
+input : IN std_logic_vector(9 downto 0); -- Input data
+Zstatus : out std_logic
+);
 end ZERO_FLAG_REG;
 
 architecture Behavioral of ZERO_FLAG_REG is
-
 begin
 
+process(clk)
+begin
+
+if ZE = '1' then
+Zstatus <= nor input;
+end if;
+
+end process;
 
 end Behavioral;

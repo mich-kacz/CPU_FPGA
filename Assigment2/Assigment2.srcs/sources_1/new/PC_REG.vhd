@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 20.02.2024 17:11:44
+-- Create Date: 12.03.2024 16:41:39
 -- Design Name: 
--- Module Name: RF_DATA_MUX - Behavioral
+-- Module Name: IR_REG - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -21,6 +21,7 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.numeric_std.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -31,27 +32,27 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity RF_DATA_MUX is
+entity PC_REG is
 --  Port ( );
+
 Port(
-    sel : IN std_logic_vector(1 downto 0);
-    instruction : IN std_logic_vector(9 downto 0);
-    external_input : IN std_logic_vector(9 downto 0);
-    prev_alu_result : IN std_logic_vector (9 DOWNTO 0);
-    output : OUT std_logic_vector (9 DOWNTO 0)
-    );
-end RF_DATA_MUX;
+IR_in : in unsigned (3 downto 0);
+PCLoad : in std_logic;
+clk : in std_logic;
+reset : in std_logic;
+PC : out unsigned (3 downto 0)
+);
+end PC_REG;
 
-architecture Behavioral of RF_DATA_MUX is
-
+architecture Behavioral of PC_REG is
 begin
+process(clk) begin
 
+if(PCLoad = '1') then
+    PC <= IR_in;
+elsif(reset='1') then
+    PC <= "0000";
+end if;
 
-WITH sel SELECT
-output <= instruction WHEN "00", --HALT
-          external_input WHEN "01", --NOT
-          prev_alu_result WHEN "10",
-          "0000000000000000" WHEN OTHERS;
-
-
+end process;
 end Behavioral;

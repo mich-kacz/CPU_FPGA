@@ -21,6 +21,7 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.numeric_std.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -36,19 +37,30 @@ entity CONTROL_UNIT is
 
 Port
 (
-    D : in std_logic_vector(9 downto 0);
     clk : in std_logic;
     reset : in std_logic;
-    IRLoad : in std_logic;
-    PCLoad : in std_logic;
-    IR : out std_logic_vector(9 downto 0)
+    IR : in std_logic_vector (9 downto 0);
+    ZStatus : in std_logic; -- ZStatus flag
+    IRLoad : out std_logic;
+    PCLoad : out std_logic;
+    IRMux : out std_logic;
+    IE : out std_logic_vector(1 downto 0);
+    WA : out unsigned(1 downto 0); --Write address
+    RAA : out unsigned(1 downto 0); --Read address A
+    RBA : out unsigned(1 downto 0); --Read address B
+    WE : out std_logic; --Write enable
+    RAE : out std_logic; --Read enable A
+    RBE : out std_logic; --Read enable B
+    op : out std_logic_vector(2 downto 0);
+    E : out std_logic; -- Tri state buffor for data oputput control
+    ZE : out std_logic -- ZStatus enable register
 );
 end CONTROL_UNIT;
 
 
 architecture Behavioral of CONTROL_UNIT is
 
- constant HALT : std_logic_vector(3 downto 0) := "0000";
+    constant HALT : std_logic_vector(3 downto 0) := "0000";
     constant MOV : std_logic_vector(3 downto 0) := "0001";
     constant IN_in : std_logic_vector(3 downto 0) := "0010";
     constant OUT_in : std_logic_vector(3 downto 0) := "0011";
@@ -66,15 +78,29 @@ architecture Behavioral of CONTROL_UNIT is
     constant MOV_2 : std_logic_vector(3 downto 0) := "1111";
     
 begin
-process 
+process(clk)
+variable state : unsigned (1 downto 0) := (others => '0');
 begin
 
-CASE  D(0 to 3) is
-WHEN HALT => IR <= D;
 
-
+CASE state IS
+WHEN 0 => --start
+    IRLoad <= '0';
+    PCLoad <= '0';
+    state := state + 1;
+WHEN 1 => --fetch
+    IRLoad <= '1';
+    PCLoad <= '1';
+    state := state + 1;
+WHEN 2 => --decode
+    IRLoad <= '0';
+    PCLoad <= '0';
+    state := state + 1;
+WHEN 3 => --execute
+    IRLoad <= '0';
+    PCLoad <= '0';
+    state := state + 1;
 END CASE;
-
 
 end process;
 end Behavioral;

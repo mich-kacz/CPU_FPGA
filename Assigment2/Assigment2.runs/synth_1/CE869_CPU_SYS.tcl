@@ -85,7 +85,16 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
+  M:/pc/desktop/HighLevelLogic/Assigment2/Assigment2/Assigment2.srcs/sources_1/new/ALU.vhd
+  M:/pc/desktop/HighLevelLogic/Assigment2/Assigment2/Assigment2.srcs/sources_1/new/ZERO_FLAG_REG.vhd
+  M:/pc/desktop/HighLevelLogic/Assigment2/Assigment2/Assigment2.srcs/sources_1/new/DATA_OUTPUT_REG.vhd
+  M:/pc/desktop/HighLevelLogic/Assigment2/Assigment2/Assigment2.srcs/sources_1/new/REGISTER_FILE.vhd
+  M:/pc/desktop/HighLevelLogic/Assigment2/Assigment2/Assigment2.srcs/sources_1/new/RF_DATA_MUX.vhd
+  M:/pc/desktop/HighLevelLogic/Assigment2/Assigment2/Assigment2.srcs/sources_1/new/CONTROL_UNIT.vhd
   M:/pc/desktop/HighLevelLogic/Assigment2/Assigment2/Assigment2.srcs/sources_1/new/ROM.vhd
+  M:/pc/desktop/HighLevelLogic/Assigment2/Assigment2/Assigment2.srcs/sources_1/new/IR_REG.vhd
+  M:/pc/desktop/HighLevelLogic/Assigment2/Assigment2/Assigment2.srcs/sources_1/new/IR_MUX.vhd
+  M:/pc/desktop/HighLevelLogic/Assigment2/Assigment2/Assigment2.srcs/sources_1/new/PC_REG.vhd
   M:/pc/desktop/HighLevelLogic/Assigment2/Assigment2/Assigment2.srcs/sources_1/new/CE869_CPU.vhd
   M:/pc/desktop/HighLevelLogic/Assignments/23-24_CE869_kaczmarczyk_michal_p/assignment1.srcs/sources_1/new/frequency_divider.vhd
   M:/pc/desktop/HighLevelLogic/Assignments/23-24_CE869_kaczmarczyk_michal_p/assignment1.srcs/sources_1/new/one_digit.vhd
@@ -105,8 +114,6 @@ read_xdc M:/pc/desktop/HighLevelLogic/Assigment2/Basys-3-Master.xdc
 set_property used_in_implementation false [get_files M:/pc/desktop/HighLevelLogic/Assigment2/Basys-3-Master.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
-
-read_checkpoint -auto_incremental -incremental C:/Users/mk23561/Assigment2/Assigment2.srcs/utils_1/imports/synth_1/CE869_CPU.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

@@ -21,6 +21,7 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.numeric_std.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -32,12 +33,54 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity REGISTER_FILE is
+
+generic
+    (
+    register_length : integer := 10;
+    memory_length : integer := 4
+    );
+
 --  Port ( );
+
+
+Port(
+    clk  : IN std_logic; --clock
+    WA : IN unsigned(1 downto 0); --Write address
+    RAA : IN unsigned(1 downto 0); --Read address A
+    RBA : IN unsigned(1 downto 0); --Read address B
+    WE : IN std_logic; --Write enable
+    RAE : IN std_logic; --Read enable A
+    RBE : IN std_logic; --Read enable B
+    input : IN std_logic_vector(register_length-1 downto 0);
+    outA : out std_logic_vector(register_length-1 downto 0); -- Output A
+    outB : out std_logic_vector(register_length-1 downto 0) -- Output B
+    );
+    
 end REGISTER_FILE;
 
 architecture Behavioral of REGISTER_FILE is
 
+--Register file memory 4x10
+subtype reg is std_logic_vector(register_length-1 downto 0);
+type register_mem is array(0 to memory_length-1) of reg;
+signal memory : register_mem;
+
 begin
 
+--Writing to register
+process(clk)
+begin
+if(WE = '1') then
+memory(TO_INTEGER(WA)) <= input;
+end if;
+end process;
+
+--Reading outA
+outA <= memory(TO_INTEGER(RAA)) WHEN RAE = '1'
+        ELSE (OTHERS=> '0');
+
+--Reading outB
+outB <= memory(TO_INTEGER(RBA)) WHEN RBE = '1'
+        ELSE (OTHERS=> '0');
 
 end Behavioral;

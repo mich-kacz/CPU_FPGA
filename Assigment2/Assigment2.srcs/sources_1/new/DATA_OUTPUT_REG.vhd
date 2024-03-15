@@ -33,11 +33,17 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity DATA_OUTPUT_REG is
 --  Port ( );
+Port(
+E : IN std_logic;
+input : IN std_logic_vector(9 downto 0);
+output : OUT std_logic_vector(9 downto 0)
+);
 end DATA_OUTPUT_REG;
 
 architecture Behavioral of DATA_OUTPUT_REG is
-
 begin
 
+output <= input WHEN E='1'
+          ELSE (OTHERS => 'Z');
 
 end Behavioral;

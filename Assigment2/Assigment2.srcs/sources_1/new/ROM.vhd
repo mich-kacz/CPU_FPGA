@@ -42,7 +42,7 @@ entity ROM is
 
     Port(
     clk  : IN std_logic;
-    adress : IN std_logic_vector(3 downto 0);
+    adress : IN unsigned(3 downto 0);
     output : out std_logic_vector(register_length-1 downto 0)
     );
 end ROM;
@@ -81,6 +81,12 @@ memory(6) <= HALT;
 memory(7) <= HALT;
 memory(8) <= HALT;
 memory(9) <= HALT;
+memory(10) <= HALT;
+memory(11) <= HALT;
+memory(12) <= HALT;
+memory(13) <= HALT;
+memory(14) <= HALT;
+memory(15) <= HALT;
 
 process(clk)
 begin
