@@ -24,7 +24,4 @@ alu_result <= (a) WHEN "000", --PASS
               (a and b) WHEN "110", --AND
               (a or b) WHEN "111";  --OR
 
-
-
-
 END BHV_ALU;

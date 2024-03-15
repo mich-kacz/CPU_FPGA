@@ -168,15 +168,57 @@ WHEN 3 => --decode
         E <= '0';
         ZE <= '1';
     WHEN LT => --Writing register to register TODO
+        --TODO
+    WHEN INC => --Writing register to register TODO
+        --TODO 
+    WHEN DEC => --Writing register to register TODO
+        --TODO
+    WHEN ADD =>
         IE <= "10";
         WE <= '1';
         RAE <= '1';
-        RBE <= '0';
-        op <= "001";
-        RAA <= UNSIGNED(IR(1 downto 0)); --Read address A
-        WA <= UNSIGNED(IR(3 downto 2)); --Write address
+        RBE <= '1';
+        op <= "100";
+        RAA <= UNSIGNED(IR(3 downto 2)); --Read address A
+        RBA <= UNSIGNED(IR(1 downto 0)); --Read address B
+        WA <= UNSIGNED(IR(5 downto 4)); --Write address
         E <= '0';
         ZE <= '1';
+    WHEN SUB =>
+        IE <= "10";
+        WE <= '1';
+        RAE <= '1';
+        RBE <= '1';
+        op <= "101";
+        RAA <= UNSIGNED(IR(3 downto 2)); --Read address A
+        RBA <= UNSIGNED(IR(1 downto 0)); --Read address B
+        WA <= UNSIGNED(IR(5 downto 4)); --Write address
+        E <= '0';
+        ZE <= '1';
+    WHEN AND_in =>
+        IE <= "10";
+        WE <= '1';
+        RAE <= '1';
+        RBE <= '1';
+        op <= "110";
+        RAA <= UNSIGNED(IR(3 downto 2)); --Read address A
+        RBA <= UNSIGNED(IR(1 downto 0)); --Read address B
+        WA <= UNSIGNED(IR(5 downto 4)); --Write address
+        E <= '0';
+        ZE <= '1';
+    WHEN OR_in =>
+        IE <= "10";
+        WE <= '1';
+        RAE <= '1';
+        RBE <= '1';
+        op <= "111";
+        RAA <= UNSIGNED(IR(3 downto 2)); --Read address A
+        RBA <= UNSIGNED(IR(1 downto 0)); --Read address B
+        WA <= UNSIGNED(IR(5 downto 4)); --Write address
+        E <= '0';
+        ZE <= '1';
+    WHEN MOV_2 =>
+        --TODO
     END CASE;
     state := state + 1;
  
