@@ -49,10 +49,12 @@ end ROM;
 
 
 architecture Behavioral of ROM is 
+    -- rom memory 16x10
     subtype reg is std_logic_vector(register_length-1 downto 0);
     type rom_memory is array(0 to memory_length-1) of reg;
     signal memory : rom_memory;
 
+    --Instruction codes with zeros
     constant HALT : std_logic_vector(register_length-1 downto 0) := "0000000000";
     constant MOV : std_logic_vector(5 downto 0) := "000100";
     constant IN_in : std_logic_vector(7 downto 0) := "00100000";
@@ -69,29 +71,30 @@ architecture Behavioral of ROM is
     constant AND_in : std_logic_vector(3 downto 0) := "1101";
     constant OR_in : std_logic_vector(3 downto 0) := "1110";
     constant MOV_2 : std_logic_vector(3 downto 0) := "1111";
+    
 begin
-
-memory(0) <= HALT;
-memory(1) <= HALT;
-memory(2) <= HALT;
-memory(3) <= HALT;
-memory(4) <= HALT;
-memory(5) <= HALT;
-memory(6) <= HALT;
-memory(7) <= HALT;
-memory(8) <= HALT;
-memory(9) <= HALT;
-memory(10) <= HALT;
-memory(11) <= HALT;
-memory(12) <= HALT;
-memory(13) <= HALT;
-memory(14) <= HALT;
-memory(15) <= HALT;
+    --Program stored in ROM
+    memory(0) <= IN_in & "01";
+    memory(1) <= MOV_2 & "000001";
+    memory(2) <= ADD & "100001";
+    memory(3) <= OUT_in & "10";
+    memory(4) <= JMP & "0000";
+    memory(5) <= HALT;
+    memory(6) <= HALT;
+    memory(7) <= HALT;
+    memory(8) <= HALT;
+    memory(9) <= HALT;
+    memory(10) <= HALT;
+    memory(11) <= HALT;
+    memory(12) <= HALT;
+    memory(13) <= HALT;
+    memory(14) <= HALT;
+    memory(15) <= HALT;
 
 process(clk)
 begin
 
-output <= memory(TO_INTEGER(UNSIGNED( adress )));
+output <= memory(TO_INTEGER(UNSIGNED( adress ))); --Outputing instruction according to address
 
 end process;
 

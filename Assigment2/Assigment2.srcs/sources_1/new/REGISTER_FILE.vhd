@@ -36,7 +36,7 @@ entity REGISTER_FILE is
 
 generic
     (
-    register_length : integer := 10;
+    register_length : integer := 16;
     memory_length : integer := 4
     );
 
@@ -51,7 +51,7 @@ Port(
     WE : IN std_logic; --Write enable
     RAE : IN std_logic; --Read enable A
     RBE : IN std_logic; --Read enable B
-    input : IN std_logic_vector(register_length-1 downto 0);
+    input : IN std_logic_vector(register_length-1 downto 0); --Input data for register file
     outA : out std_logic_vector(register_length-1 downto 0); -- Output A
     outB : out std_logic_vector(register_length-1 downto 0) -- Output B
     );
@@ -60,7 +60,7 @@ end REGISTER_FILE;
 
 architecture Behavioral of REGISTER_FILE is
 
---Register file memory 4x10
+--Register file memory 4x16
 subtype reg is std_logic_vector(register_length-1 downto 0);
 type register_mem is array(0 to memory_length-1) of reg;
 signal memory : register_mem;
@@ -77,10 +77,10 @@ end process;
 
 --Reading outA
 outA <= memory(TO_INTEGER(RAA)) WHEN RAE = '1'
-        ELSE (OTHERS=> '0');
+        ELSE (input);
 
 --Reading outB
 outB <= memory(TO_INTEGER(RBA)) WHEN RBE = '1'
-        ELSE (OTHERS=> '0');
+        ELSE (input);
 
 end Behavioral;

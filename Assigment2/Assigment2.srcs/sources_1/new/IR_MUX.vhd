@@ -35,10 +35,10 @@ USE IEEE.numeric_std.all;
 entity IR_MUX is
 --  Port ( );
 Port(
-    INC_in : in unsigned (3 downto 0);
-    IR_in : in std_logic_vector (3 downto 0);
-    IRMux : in std_logic;
-    IR_out : out unsigned (3 downto 0)
+    INC_in : in unsigned (3 downto 0); --Program counter input
+    IR_in : in std_logic_vector (3 downto 0); --Jump instructions input
+    IRMux : in std_logic; --Mux state control signal
+    IR_out : out unsigned (3 downto 0) --Multiplexer output
     
 );
 end IR_MUX;
@@ -46,7 +46,7 @@ end IR_MUX;
 architecture Behavioral of IR_MUX is
 begin
 
-IR_out<= (INC_in + 1) WHEN IRMux='1' else --Mux if IRLoad 1 then incremen counter else load counter from IR
+IR_out<= (INC_in) WHEN IRMux='1' else --Mux if IRLoad 1 then progra counter value else load counter from IR
          UNSIGNED(IR_in) WHEN IRMux='0';
 
 end Behavioral;

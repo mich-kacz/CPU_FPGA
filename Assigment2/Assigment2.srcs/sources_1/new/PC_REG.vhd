@@ -36,22 +36,32 @@ entity PC_REG is
 --  Port ( );
 
 Port(
-IR_in : in unsigned (3 downto 0);
-PCLoad : in std_logic;
-clk : in std_logic;
-reset : in std_logic;
-PC : out unsigned (3 downto 0)
+IR_in : in unsigned (3 downto 0); --Program counter input (value from jump or next PC value)
+PCLoad : in std_logic; --Enable PC load
+clk : in std_logic; --Clock
+reset : in std_logic; --Reset program counter
+PC : out unsigned (3 downto 0); --Program counter actual value
+PC_next : out unsigned (3 downto 0) --Next program counter value
 );
 end PC_REG;
 
 architecture Behavioral of PC_REG is
+signal counter : unsigned (3 downto 0) := (OTHERS => '0');
 begin
-process(clk) begin
+process(clk)
+begin
 
-if(PCLoad = '1') then
+if(PCLoad = '1') then --If enable PC load value from input and increment next PC state
     PC <= IR_in;
-elsif(reset='1') then
+    counter <= IR_in;
+    PC_next <= IR_in + 1;
+elsif(reset='1') then --If reset true then PC equals 0
     PC <= "0000";
+    counter <= "0000";
+    PC_next <= "0001";
+else --Else program counter is not changing its state
+    PC <= counter;
+    PC_next <= counter + 1;
 end if;
 
 end process;

@@ -24,15 +24,16 @@ ENTITY CE869_CPU_SYS IS
           btnC : IN std_logic;                     -- On board push button (used as CPU reset) "FPGA PIN - U18" 
           sw   : IN std_logic_vector(15 DOWNTO 0); -- On board 16 slide switches "FPGA PINs - R2[15],T1[14],U1[13],W2[12],R3[11],T2[10],T3[9],V2[8],W13[7],W14[6],V15[5],W15[4],W17[3],W16[2],V16[1],V17[0]"
           an   : OUT std_logic_vector(3 DOWNTO 0); -- 7-seg display anodes (1 for each display digit), active low "FPGA PIN - U2"
-          seg  : OUT std_logic_vector(6 DOWNTO 0)  -- 7-seg display cathodes (common to all display digits), active low "FPGA PINs - W7[CA/7],W6[CB/6],U8[CC/5],V8[CD/4],U5[CE/3],V5[CF/2],U7[CG/1],V7[DP/0]"
+          seg  : OUT std_logic_vector(0 TO 6)  -- 7-seg display cathodes (common to all display digits), active low "FPGA PINs - W7[CA/7],W6[CB/6],U8[CC/5],V8[CD/4],U5[CE/3],V5[CF/2],U7[CG/1],V7[DP/0]"
        );
 END CE869_CPU_SYS;
 
 ARCHITECTURE STCTR_CE869_CPU_SYS OF CE869_CPU_SYS IS  --Top level Structural instantiations of all components in the design
 
-signal digit : STD_LOGIC_VECTOR (15 downto 0);
+signal digit : STD_LOGIC_VECTOR (15 downto 0) := (OTHERS=>'0');
+signal d0, d1, d2, d3 : std_logic_vector(3 downto 0); -- Signals for digits displayed on the screen
 signal clk_div : STD_LOGIC;
-signal dummyDP : STD_LOGIC;
+signal dummyDP : STD_LOGIC := '0';
 
 BEGIN
 --  --Instantiation of the CPU
@@ -44,22 +45,31 @@ BEGIN
        data_output => digit
       );
       
+  --Frequency divider for LCD
   freq_div : entity work.frequency_divider
     PORT MAP (
-       ck => clk,
-       ckOut => clk_div
+       ck => clk, -- Signal 100MHz
+       ckOut => clk_div --Divided signal
       );
-  
+
 --  --Instantiation of the Seven Segment Display Driver
   svn_sgmnt_drv_instance : entity work.four_digits
     PORT MAP (
-                d3 => digit(15 downto 12), -- Fourth digit
-                d2  => digit(11 downto 8), -- Third digit
-                d1  => digit(7 downto 4), -- Second digit
-                d0  => digit(3 downto 0), -- First digit
+                d0 => digit(3 downto 0),
+                d1 => digit(7 downto 4),
+                d2 => digit(11 downto 8),
+                d3 => digit(15 downto 12),
                 ck  => clk_div, -- Clock signal for switching digit
                 seg  => seg, -- Signal for one digit logic(segments)
                 an  => an, -- vector for defining which digit to display on screen
                 dp  => dummyDP  -- Dot on an 
              );
+--process(clk_div)
+--begin 
+--        d0 <= digit(3 downto 0);
+--        d1 <= digit(7 downto 4);
+--        d2 <= digit(11 downto 8);
+--        d3 <= digit(15 downto 12);
+--end process;
+          
 END STCTR_CE869_CPU_SYS;

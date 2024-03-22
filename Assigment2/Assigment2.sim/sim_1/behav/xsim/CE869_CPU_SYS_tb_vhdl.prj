@@ -1,0 +1,21 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../Assigment2.srcs/sources_1/new/ALU.vhd" \
+"../../../../Assigment2.srcs/sources_1/new/ZERO_FLAG_REG.vhd" \
+"../../../../Assigment2.srcs/sources_1/new/DATA_OUTPUT_REG.vhd" \
+"../../../../Assigment2.srcs/sources_1/new/REGISTER_FILE.vhd" \
+"../../../../Assigment2.srcs/sources_1/new/RF_DATA_MUX.vhd" \
+"../../../../Assigment2.srcs/sources_1/new/CONTROL_UNIT.vhd" \
+"../../../../Assigment2.srcs/sources_1/new/ROM.vhd" \
+"../../../../Assigment2.srcs/sources_1/new/IR_REG.vhd" \
+"../../../../Assigment2.srcs/sources_1/new/IR_MUX.vhd" \
+"../../../../Assigment2.srcs/sources_1/new/PC_REG.vhd" \
+"../../../../Assigment2.srcs/sources_1/new/CE869_CPU.vhd" \
+"../../../../../../Assignments/23-24_CE869_kaczmarczyk_michal_p/assignment1.srcs/sources_1/new/frequency_divider.vhd" \
+"../../../../../../Assignments/23-24_CE869_kaczmarczyk_michal_p/assignment1.srcs/sources_1/new/one_digit.vhd" \
+"../../../../../../Assignments/23-24_CE869_kaczmarczyk_michal_p/assignment1.srcs/sources_1/new/four_digits.vhd" \
+"../../../../Assigment2.srcs/sources_1/new/CE869_CPU_SYS.vhd" \
+"../../../../Assigment2.srcs/sim_1/new/CE869_CPU_SYS_tb.vhd" \
+
+# Do not sort compile order
+nosort

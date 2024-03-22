@@ -1,0 +1,5 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "M:/pc/desktop/HighLevelLogic/Assigment2/Assigment2/Assigment2.sim/sim_1/synth/func/xsim/CE869_CPU_SYS_func_synth.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'frequency_divider'
+INFO: [VRFC 10-3107] analyzing entity 'one_digit'
+INFO: [VRFC 10-3107] analyzing entity 'four_digits'
+INFO: [VRFC 10-3107] analyzing entity 'CE869_CPU_SYS'

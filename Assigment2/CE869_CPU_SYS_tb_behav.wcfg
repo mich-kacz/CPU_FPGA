@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="CE869_CPU_SYS_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="CE869_CPU_SYS_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,730.929 ns"></ZoomEndTime>
+      <Cursor1Time time="1,430.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="236"></NameColumnWidth>
+      <ValueColumnWidth column_width="110"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="27" />
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/data_input" type="array">
+      <obj_property name="ElementShortName">data_input[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_input[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/data_output" type="array">
+      <obj_property name="ElementShortName">data_output[15:0]</obj_property>
+      <obj_property name="ObjectShortName">data_output[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/pc" type="array">
+      <obj_property name="ElementShortName">pc[3:0]</obj_property>
+      <obj_property name="ObjectShortName">pc[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/pcIRMux" type="array">
+      <obj_property name="ElementShortName">pcIRMux[3:0]</obj_property>
+      <obj_property name="ObjectShortName">pcIRMux[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/PC_next" type="array">
+      <obj_property name="ElementShortName">PC_next[3:0]</obj_property>
+      <obj_property name="ObjectShortName">PC_next[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/instruction" type="array">
+      <obj_property name="ElementShortName">instruction[9:0]</obj_property>
+      <obj_property name="ObjectShortName">instruction[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/D" type="array">
+      <obj_property name="ElementShortName">D[9:0]</obj_property>
+      <obj_property name="ObjectShortName">D[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/IRLoad" type="logic">
+      <obj_property name="ElementShortName">IRLoad</obj_property>
+      <obj_property name="ObjectShortName">IRLoad</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/PCLoad" type="logic">
+      <obj_property name="ElementShortName">PCLoad</obj_property>
+      <obj_property name="ObjectShortName">PCLoad</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/IRMux" type="logic">
+      <obj_property name="ElementShortName">IRMux</obj_property>
+      <obj_property name="ObjectShortName">IRMux</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/IE" type="array">
+      <obj_property name="ElementShortName">IE[1:0]</obj_property>
+      <obj_property name="ObjectShortName">IE[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/prev_ALU_res" type="array">
+      <obj_property name="ElementShortName">prev_ALU_res[15:0]</obj_property>
+      <obj_property name="ObjectShortName">prev_ALU_res[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/ID" type="array">
+      <obj_property name="ElementShortName">ID[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ID[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/WA" type="array">
+      <obj_property name="ElementShortName">WA[1:0]</obj_property>
+      <obj_property name="ObjectShortName">WA[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/RAA" type="array">
+      <obj_property name="ElementShortName">RAA[1:0]</obj_property>
+      <obj_property name="ObjectShortName">RAA[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/RBA" type="array">
+      <obj_property name="ElementShortName">RBA[1:0]</obj_property>
+      <obj_property name="ObjectShortName">RBA[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/WE" type="logic">
+      <obj_property name="ElementShortName">WE</obj_property>
+      <obj_property name="ObjectShortName">WE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/RAE" type="logic">
+      <obj_property name="ElementShortName">RAE</obj_property>
+      <obj_property name="ObjectShortName">RAE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/RBE" type="logic">
+      <obj_property name="ElementShortName">RBE</obj_property>
+      <obj_property name="ObjectShortName">RBE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/outA" type="array">
+      <obj_property name="ElementShortName">outA[15:0]</obj_property>
+      <obj_property name="ObjectShortName">outA[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/outB" type="array">
+      <obj_property name="ElementShortName">outB[15:0]</obj_property>
+      <obj_property name="ObjectShortName">outB[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/op" type="array">
+      <obj_property name="ElementShortName">op[2:0]</obj_property>
+      <obj_property name="ObjectShortName">op[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/E" type="logic">
+      <obj_property name="ElementShortName">E</obj_property>
+      <obj_property name="ObjectShortName">E</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/ZE" type="logic">
+      <obj_property name="ElementShortName">ZE</obj_property>
+      <obj_property name="ObjectShortName">ZE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/CE869_CPU_SYS_tb/DUT/cpu_instance/ZStatus" type="logic">
+      <obj_property name="ElementShortName">ZStatus</obj_property>
+      <obj_property name="ObjectShortName">ZStatus</obj_property>
+   </wvobject>
+</wave_config>

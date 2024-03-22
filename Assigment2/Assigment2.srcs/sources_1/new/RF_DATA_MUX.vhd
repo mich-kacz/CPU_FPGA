@@ -34,11 +34,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity RF_DATA_MUX is
 --  Port ( );
 Port(
-    sel : IN std_logic_vector(1 downto 0);
-    instruction : IN std_logic_vector(9 downto 0);
-    external_input : IN std_logic_vector(9 downto 0);
-    prev_alu_result : IN std_logic_vector (9 DOWNTO 0);
-    output : OUT std_logic_vector (9 DOWNTO 0)
+    sel : IN std_logic_vector(1 downto 0); --Select mux state
+    instruction : IN std_logic_vector(3 downto 0); --Instruction input (last 4 bits)
+    external_input : IN std_logic_vector(15 downto 0); -- External input (switches)
+    prev_alu_result : IN std_logic_vector (15 DOWNTO 0); --Previous alu result as input
+    output : OUT std_logic_vector (15 DOWNTO 0) -- Multiplexer output
     );
 end RF_DATA_MUX;
 
@@ -48,8 +48,8 @@ begin
 
 
 WITH sel SELECT
-output <= instruction WHEN "00", --HALT
-          external_input WHEN "01", --NOT
+output <= ("000000000000" & instruction) WHEN "00", --If instruction as input padd with zeros to achieve 16 bit
+          external_input WHEN "01",
           prev_alu_result WHEN "10",
           "0000000000000000" WHEN OTHERS;
 

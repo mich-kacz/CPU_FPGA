@@ -36,10 +36,10 @@ entity IR_REG is
 --  Port ( );
 
 Port(
-D : in std_logic_vector(9 downto 0);
-clk : in std_logic;
-IRLoad : in std_logic;
-IR : out std_logic_vector (9 downto 0)
+D : in std_logic_vector(9 downto 0); --Input from ROM 
+clk : in std_logic; --Clock
+IRLoad : in std_logic; --Enable instruction load
+IR : out std_logic_vector (9 downto 0) --Internal register output
 );
 end IR_REG;
 

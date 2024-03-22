@@ -34,16 +34,22 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity DATA_OUTPUT_REG is
 --  Port ( );
 Port(
-E : IN std_logic;
-input : IN std_logic_vector(9 downto 0);
-output : OUT std_logic_vector(9 downto 0)
+E : IN std_logic; --Control of tri state buffer
+input : IN std_logic_vector(15 downto 0); -- input for tri state buffer
+output : OUT std_logic_vector(15 downto 0) -- Output of tri state buffer
 );
 end DATA_OUTPUT_REG;
 
 architecture Behavioral of DATA_OUTPUT_REG is
+    signal reg : std_logic_vector(15 downto 0) := (others => '0'); -- singal to save last alu instruction
 begin
+    
+--Tri state buffer implementation
+--    output <= input WHEN E='1'
+--          ELSE (OTHERS => 'Z');
 
-output <= input WHEN E='1'
-          ELSE (OTHERS => 'Z');
+--For tests to prevent blinking of LCD (saves last alu result with enable true)
+    output <= input WHEN E='1' ELSE (reg);
+    reg <=  input WHEN E='1' ELSE (reg);
 
 end Behavioral;
