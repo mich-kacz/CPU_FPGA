@@ -27,6 +27,42 @@ set_property -dict { PACKAGE_PIN T1    IOSTANDARD LVCMOS33 } [get_ports {sw[14]}
 set_property -dict { PACKAGE_PIN R2    IOSTANDARD LVCMOS33 } [get_ports {sw[15]}]
 
 
+## Race
+
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/RAE_reg_0[0]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/RAE_reg_0[1]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/RAE_reg_0[2]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/RAE_reg_0[3]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/RAE_reg_11[1]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/RAE_reg_2[0]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/RAE_reg_2[1]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/RAE_reg_2[2]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/RAE_reg_2[3]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/RAE_reg_3[0]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/RAE_reg_3[2]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/RAE_reg_4[0]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/RAE_reg_5]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/input[13]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/memory_reg_r1_0_3_12_15_i_15_n_0]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/memory_reg_r1_0_3_6_11_i_18_n_0]
+
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/outA[11]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/outA[13]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/input[15]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/outA[0]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/outA[10]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/outA[12]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/outA[14]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/outA[2]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/outA[3]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/outA[4]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/outA[5]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/outA[6]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/outA[7]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/outA[8]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/outA[9]]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE [get_nets cpu_instance/contorl_unit_instance/outA[1]]
+
 ## LEDs
 #set_property -dict { PACKAGE_PIN U16   IOSTANDARD LVCMOS33 } [get_ports {led[0]}]
 #set_property -dict { PACKAGE_PIN E19   IOSTANDARD LVCMOS33 } [get_ports {led[1]}]

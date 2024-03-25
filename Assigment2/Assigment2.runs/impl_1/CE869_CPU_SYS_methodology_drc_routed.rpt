@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.2 (win64) Build 3367213 Tue Oct 19 02:48:09 MDT 2021
-| Date         : Mon Mar 25 10:57:05 2024
+| Date         : Mon Mar 25 11:40:30 2024
 | Host         : cseelab836 running 64-bit major release  (build 9200)
 | Command      : report_methodology -file CE869_CPU_SYS_methodology_drc_routed.rpt -pb CE869_CPU_SYS_methodology_drc_routed.pb -rpx CE869_CPU_SYS_methodology_drc_routed.rpx
 | Design       : CE869_CPU_SYS
@@ -23,15 +23,15 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 63
+             Violations found: 48
 +-----------+------------------+-------------------------------+------------+
 | Rule      | Severity         | Description                   | Violations |
 +-----------+------------------+-------------------------------+------------+
 | TIMING-17 | Critical Warning | Non-clocked sequential cell   | 10         |
-| TIMING-16 | Warning          | Large setup violation         | 29         |
-| TIMING-18 | Warning          | Missing input or output delay | 17         |
+| TIMING-16 | Warning          | Large setup violation         | 27         |
+| TIMING-18 | Warning          | Missing input or output delay | 1          |
 | TIMING-20 | Warning          | Non-clocked latch             | 4          |
-| TIMING-23 | Warning          | Combinational loop found      | 3          |
+| TIMING-23 | Warning          | Combinational loop found      | 6          |
 +-----------+------------------+-------------------------------+------------+
 
 2. REPORT DETAILS
@@ -88,232 +88,142 @@ Related violations: <none>
 
 TIMING-16#1 Warning
 Large setup violation  
-There is a large setup violation of -15.529 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_0_5/RAMA_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -11.920 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_0_5/RAMB_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#2 Warning
 Large setup violation  
-There is a large setup violation of -15.596 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_0_5/RAMA_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -11.968 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_0_5/RAMB_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#3 Warning
 Large setup violation  
-There is a large setup violation of -15.652 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_0_5/RAMB/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -15.168 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_0_5/RAMC/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#4 Warning
 Large setup violation  
-There is a large setup violation of -15.794 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_0_5/RAMB/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -15.320 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_0_5/RAMC/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#5 Warning
 Large setup violation  
-There is a large setup violation of -16.024 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_0_5/RAMC_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -18.782 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_0_5/RAMC_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#6 Warning
 Large setup violation  
-There is a large setup violation of -16.068 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_6_11/RAMA/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -18.800 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_0_5/RAMC_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#7 Warning
 Large setup violation  
-There is a large setup violation of -16.087 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_0_5/RAMC_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -22.865 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_6_11/RAMA/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#8 Warning
 Large setup violation  
-There is a large setup violation of -16.433 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_6_11/RAMA/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -22.920 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_6_11/RAMA/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#9 Warning
 Large setup violation  
-There is a large setup violation of -19.840 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_0_5/RAMC/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -26.393 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_6_11/RAMA_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#10 Warning
 Large setup violation  
-There is a large setup violation of -19.841 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_0_5/RAMC/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -26.572 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_6_11/RAMA_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#11 Warning
 Large setup violation  
-There is a large setup violation of -2.019 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_0_5/RAMB_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -28.825 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_6_11/RAMB/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#12 Warning
 Large setup violation  
-There is a large setup violation of -2.261 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_0_5/RAMB_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -29.142 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_6_11/RAMB/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#13 Warning
 Large setup violation  
-There is a large setup violation of -22.957 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_6_11/RAMB/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -29.227 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/zero_flag_reg_instance/Zstatus_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#14 Warning
 Large setup violation  
-There is a large setup violation of -22.964 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_6_11/RAMB/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -31.506 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_6_11/RAMC/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#15 Warning
 Large setup violation  
-There is a large setup violation of -24.636 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_6_11/RAMB_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -31.536 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_6_11/RAMC/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#16 Warning
 Large setup violation  
-There is a large setup violation of -24.948 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_6_11/RAMB_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -33.618 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_12_15/RAMA/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#17 Warning
 Large setup violation  
-There is a large setup violation of -25.095 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/zero_flag_reg_instance/Zstatus_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -33.640 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_12_15/RAMA/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#18 Warning
 Large setup violation  
-There is a large setup violation of -29.576 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_12_15/RAMA/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -36.486 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_12_15/RAMA_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#19 Warning
 Large setup violation  
-There is a large setup violation of -29.617 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_12_15/RAMA/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -36.624 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_12_15/RAMA_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#20 Warning
 Large setup violation  
-There is a large setup violation of -32.899 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_12_15/RAMA_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -38.542 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_12_15/RAMB/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#21 Warning
 Large setup violation  
-There is a large setup violation of -32.904 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_12_15/RAMA_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -38.560 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_12_15/RAMB/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#22 Warning
 Large setup violation  
-There is a large setup violation of -38.148 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_12_15/RAMB/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -4.684 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_0_5/RAMA/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#23 Warning
 Large setup violation  
-There is a large setup violation of -38.313 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_12_15/RAMB/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -4.826 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_0_5/RAMA/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#24 Warning
 Large setup violation  
-There is a large setup violation of -41.447 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_12_15/RAMB_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -6.213 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_0_5/RAMA_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#25 Warning
 Large setup violation  
-There is a large setup violation of -41.596 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_12_15/RAMB_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -6.306 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_0_5/RAMA_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#26 Warning
 Large setup violation  
-There is a large setup violation of -5.131 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_6_11/RAMA_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -9.020 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_0_5/RAMB/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-16#27 Warning
 Large setup violation  
-There is a large setup violation of -5.449 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_6_11/RAMA_D1/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
-Related violations: <none>
-
-TIMING-16#28 Warning
-Large setup violation  
-There is a large setup violation of -9.394 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r2_0_3_6_11/RAMC/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
-Related violations: <none>
-
-TIMING-16#29 Warning
-Large setup violation  
-There is a large setup violation of -9.622 ns between cpu_instance/contorl_unit_instance/op_reg[1]/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_6_11/RAMC/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+There is a large setup violation of -9.168 ns between cpu_instance/contorl_unit_instance/RBA_reg[1]_replica/C (clocked by sys_clk_pin) and cpu_instance/register_file_instance/memory_reg_r1_0_3_0_5/RAMB/I (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
 Related violations: <none>
 
 TIMING-18#1 Warning
 Missing input or output delay  
 An input delay is missing on btnC relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#2 Warning
-Missing input or output delay  
-An input delay is missing on sw[0] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#3 Warning
-Missing input or output delay  
-An input delay is missing on sw[10] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#4 Warning
-Missing input or output delay  
-An input delay is missing on sw[11] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#5 Warning
-Missing input or output delay  
-An input delay is missing on sw[12] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#6 Warning
-Missing input or output delay  
-An input delay is missing on sw[13] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#7 Warning
-Missing input or output delay  
-An input delay is missing on sw[14] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#8 Warning
-Missing input or output delay  
-An input delay is missing on sw[15] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#9 Warning
-Missing input or output delay  
-An input delay is missing on sw[1] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#10 Warning
-Missing input or output delay  
-An input delay is missing on sw[2] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#11 Warning
-Missing input or output delay  
-An input delay is missing on sw[3] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#12 Warning
-Missing input or output delay  
-An input delay is missing on sw[4] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#13 Warning
-Missing input or output delay  
-An input delay is missing on sw[5] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#14 Warning
-Missing input or output delay  
-An input delay is missing on sw[6] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#15 Warning
-Missing input or output delay  
-An input delay is missing on sw[7] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#16 Warning
-Missing input or output delay  
-An input delay is missing on sw[8] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#17 Warning
-Missing input or output delay  
-An input delay is missing on sw[9] relative to clock(s) sys_clk_pin
 Related violations: <none>
 
 TIMING-20#1 Warning
@@ -338,17 +248,32 @@ Related violations: <none>
 
 TIMING-23#1 Warning
 Combinational loop found  
-A timing loop has been detected on a combinational path. A timing arc has been disabled between cpu_instance/contorl_unit_instance/memory_reg_r1_0_3_12_15_i_21/S[2] and cpu_instance/contorl_unit_instance/memory_reg_r1_0_3_12_15_i_21/O[2] to disable the timing loop
+A timing loop has been detected on a combinational path. A timing arc has been disabled between cpu_instance/alu_instance/alu_result0_inferred__1/i__carry/S[1] and cpu_instance/alu_instance/alu_result0_inferred__1/i__carry/O[1] to disable the timing loop
 Related violations: <none>
 
 TIMING-23#2 Warning
 Combinational loop found  
-A timing loop has been detected on a combinational path. A timing arc has been disabled between cpu_instance/contorl_unit_instance/memory_reg_r1_0_3_12_15_i_7/I0 and cpu_instance/contorl_unit_instance/memory_reg_r1_0_3_12_15_i_7/O to disable the timing loop
+A timing loop has been detected on a combinational path. A timing arc has been disabled between cpu_instance/alu_instance/alu_result0_inferred__1/i__carry__0/S[0] and cpu_instance/alu_instance/alu_result0_inferred__1/i__carry__0/O[0] to disable the timing loop
 Related violations: <none>
 
 TIMING-23#3 Warning
 Combinational loop found  
-A timing loop has been detected on a combinational path. A timing arc has been disabled between cpu_instance/contorl_unit_instance/output_reg[3]_i_1/I5 and cpu_instance/contorl_unit_instance/output_reg[3]_i_1/O to disable the timing loop
+A timing loop has been detected on a combinational path. A timing arc has been disabled between cpu_instance/alu_instance/alu_result0_inferred__1/i__carry__0/S[1] and cpu_instance/alu_instance/alu_result0_inferred__1/i__carry__0/O[1] to disable the timing loop
+Related violations: <none>
+
+TIMING-23#4 Warning
+Combinational loop found  
+A timing loop has been detected on a combinational path. A timing arc has been disabled between cpu_instance/alu_instance/alu_result0_inferred__1/i__carry__0/S[2] and cpu_instance/alu_instance/alu_result0_inferred__1/i__carry__0/O[2] to disable the timing loop
+Related violations: <none>
+
+TIMING-23#5 Warning
+Combinational loop found  
+A timing loop has been detected on a combinational path. A timing arc has been disabled between cpu_instance/contorl_unit_instance/output_reg[2]_i_2/I3 and cpu_instance/contorl_unit_instance/output_reg[2]_i_2/O to disable the timing loop
+Related violations: <none>
+
+TIMING-23#6 Warning
+Combinational loop found  
+A timing loop has been detected on a combinational path. A timing arc has been disabled between cpu_instance/contorl_unit_instance/output_reg[3]_i_2/I4 and cpu_instance/contorl_unit_instance/output_reg[3]_i_2/O to disable the timing loop
 Related violations: <none>
 
 

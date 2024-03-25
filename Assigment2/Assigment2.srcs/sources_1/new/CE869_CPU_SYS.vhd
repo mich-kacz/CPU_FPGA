@@ -45,6 +45,7 @@ BEGIN
        data_output => digit
       );
       
+      
   --Frequency divider for LCD
   freq_div : entity work.frequency_divider
     PORT MAP (
@@ -55,21 +56,23 @@ BEGIN
 --  --Instantiation of the Seven Segment Display Driver
   svn_sgmnt_drv_instance : entity work.four_digits
     PORT MAP (
-                d0 => "0000",--digit(3 downto 0),
-                d1 => "0000",--digit(7 downto 4),
-                d2 => "0000",--digit(11 downto 8),
-                d3 => "0000",--digit(15 downto 12),
+                d0 => digit(3 downto 0),
+                d1 => digit(7 downto 4),
+                d2 => digit(11 downto 8),
+                d3 => digit(15 downto 12),
                 ck  => clk_div, -- Clock signal for switching digit
                 seg  => seg, -- Signal for one digit logic(segments)
                 an  => an, -- vector for defining which digit to display on screen
                 dp  => dummyDP  -- Dot on an 
              );
---process(clk_div)
+--process(clk)
 --begin 
+--    if rising_edge(clk) then
 --        d0 <= digit(3 downto 0);
 --        d1 <= digit(7 downto 4);
 --        d2 <= digit(11 downto 8);
 --        d3 <= digit(15 downto 12);
+--    end if;
 --end process;
           
 END STCTR_CE869_CPU_SYS;

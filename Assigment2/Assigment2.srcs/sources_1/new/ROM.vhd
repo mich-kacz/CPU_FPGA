@@ -74,14 +74,14 @@ architecture Behavioral of ROM is
     
 begin
     --Program stored in ROM
-    memory(0) <= MOV_2 & "011111";
-    memory(1) <= HALT;
-    memory(2) <= ADD & "100101";
-    memory(3) <= OUT_in & "10";
-    memory(4) <= MOV_2 & "000011";
-    memory(5) <= ADD & "100001";
-    memory(6) <= OUT_in & "10";
-    memory(7) <= JMP & "0000";
+    memory(0) <= MOV_2 & "010011";
+    memory(1) <= ADD & "100101";
+    memory(2) <= OUT_in & "10";
+    memory(3) <= HALT;
+    memory(4) <= HALT;
+    memory(5) <= HALT;
+    memory(6) <= HALT;
+    memory(7) <= HALT;
     memory(8) <= HALT;
     memory(9) <= HALT;
     memory(10) <= HALT;
