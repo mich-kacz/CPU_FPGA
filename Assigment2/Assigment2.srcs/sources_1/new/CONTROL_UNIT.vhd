@@ -84,48 +84,12 @@ variable state : unsigned (2 downto 0) := (others => '0'); --State of the contro
 variable incDecCounter : UNSIGNED(3 downto 0) := (others => '0'); --Counter to preform incrementation and decrementation
 begin
 
-
-CASE to_integer(state) IS
-WHEN 0 => --start state
-    IRLoad <= '0';
-    PCLoad <= '0';
-    state := state + 1; -- go to next state
+if rising_edge(clk) then
     
-WHEN 1 => --fetch IR state
-    IRLoad <= '1';
-    PCLoad <= '0';
-    state := state + 1; -- go to next state
-    
-WHEN 2 => --driveMux and counter state
-    IRLoad <= '0';
-    PCLoad <= '1';
-    CASE IR(9 downto 6) is
-    WHEN JN =>
-        IF ZStatus = '1' then
-            IRMux <= '0';
-        ELSIF ZStatus = '0' THEN
-            IRMux <= '1';
-        END IF;
-     WHEN JMP => 
-        IRMux <= '0';
-     WHEN JNZ =>
-        IF ZStatus = '1' then
-            IRMux <= '1';
-        ELSIF ZStatus = '0' THEN
-            IRMux <= '0';
-        else
-            IRMux <= '1';
-        END IF;
-     WHEN others =>
-        IRMux <= '1';
-     END CASE;
-    state := state + 1; -- go to next state
-    
-WHEN 3 => --decode/execute state
-    IRLoad <= '0';
-    PCLoad <= '0';
-    CASE IR(9 downto 6) is
-    WHEN HALT =>
+    CASE to_integer(state) IS
+    WHEN 0 => --start state
+        IRLoad <= '0';
+        PCLoad <= '0';
         IE <= "00";
         WE <= '0';
         RAE <= '0';
@@ -133,67 +97,43 @@ WHEN 3 => --decode/execute state
         op <= "0000";
         E <= '0';
         ZE <= '0';
-    WHEN MOV => --Writing register to register
-        IE <= "10";
-        WE <= '1';
-        RAE <= '1';
-        RBE <= '0';
-        op <= "0000";
-        WA <= UNSIGNED(IR(3 downto 2)); --Write address
-        RAA <= UNSIGNED(IR(1 downto 0)); --Read address A
-        E <= '0';
-        ZE <= '0';
-    WHEN IN_in => --Writing external input to register
-        IE <= "01";
-        WE <= '1';
-        RAE <= '0';
-        RBE <= '0';
-        op <= "0000";
-        WA <= UNSIGNED(IR(1 downto 0)); --Write address
-        E <= '0';
-        ZE <= '0';
-    WHEN OUT_in => --Outputing register
-        IE <= "00";
-        WE <= '0';
-        RAE <= '1';
-        RBE <= '0';
-        op <= "0000";
-        RAA <= UNSIGNED(IR(1 downto 0)); --Read address A
-        E <= '1';
-        ZE <= '0';
-    WHEN NOT_in => --Not operation
-        IE <= "10";
-        WE <= '1';
-        RAE <= '1';
-        RBE <= '0';
-        op <= "0001";
-        RAA <= UNSIGNED(IR(1 downto 0)); --Read address A
-        WA <= UNSIGNED(IR(3 downto 2)); --Write address
-        E <= '0';
-        ZE <= '1';
-    WHEN LT => --Less than operation
-        IE <= "00";
-        WE <= '0';
-        RAE <= '1';
-        RBE <= '1';
-        op <= "1000";
-        RAA <= UNSIGNED(IR(1 downto 0)); --Read address A
-        RBA <= UNSIGNED(IR(3 downto 2)); --Write address
-        E <= '0';
-        ZE <= '1';
-    WHEN INC => -- Incrementation by nnnnn
-        IF incDecCounter < UNSIGNED(IR(3 downto 0)) then -- If incrementet less than nnnnn
-            IE <= "00";
-            WE <= '1';
-            RAE <= '1';
-            RBE <= '0';
-            op <= "0010";
-            RAA <= UNSIGNED(IR(5 downto 4)); --Read address A
-            WA <= UNSIGNED(IR(5 downto 4)); --Write address
-            E <= '0';
-            ZE <= '1';
-            state := state;
-        else --If incrementation finished go to start state
+        state := state + 1; -- go to next state
+        
+    WHEN 1 => --fetch IR state
+        IRLoad <= '1';
+        PCLoad <= '0';
+        state := state + 1; -- go to next state
+        
+    WHEN 2 => --driveMux and counter state
+        IRLoad <= '0';
+        PCLoad <= '1';
+        CASE IR(9 downto 6) is
+        WHEN JN =>
+            IF ZStatus = '1' then
+                IRMux <= '0';
+            ELSIF ZStatus = '0' THEN
+                IRMux <= '1';
+            END IF;
+         WHEN JMP => 
+            IRMux <= '0';
+         WHEN JNZ =>
+            IF ZStatus = '1' then
+                IRMux <= '1';
+            ELSIF ZStatus = '0' THEN
+                IRMux <= '0';
+            else
+                IRMux <= '1';
+            END IF;
+         WHEN others =>
+            IRMux <= '1';
+         END CASE;
+        state := state + 1; -- go to next state
+        
+    WHEN 3 => --decode/execute state
+        IRLoad <= '0';
+        PCLoad <= '0';
+        CASE IR(9 downto 6) is
+        WHEN HALT =>
             IE <= "00";
             WE <= '0';
             RAE <= '0';
@@ -201,22 +141,153 @@ WHEN 3 => --decode/execute state
             op <= "0000";
             E <= '0';
             ZE <= '0';
-            state := to_unsigned(0, 3);
-        END IF;
-         
-    WHEN DEC => -- Decremenation by nnnnn
-        IF incDecCounter < UNSIGNED(IR(3 downto 0)) then -- If decrementedtet less than nnnnn
-            IE <= "00";
+        WHEN MOV => --Writing register to register
+            IE <= "10";
             WE <= '1';
             RAE <= '1';
             RBE <= '0';
-            op <= "0011";
-            RAA <= UNSIGNED(IR(5 downto 4)); --Read address A
+            op <= "0000";
+            WA <= UNSIGNED(IR(3 downto 2)); --Write address
+            RAA <= UNSIGNED(IR(1 downto 0)); --Read address A
+            E <= '0';
+            ZE <= '0';
+        WHEN IN_in => --Writing external input to register
+            IE <= "01";
+            WE <= '1';
+            RAE <= '0';
+            RBE <= '0';
+            op <= "0000";
+            WA <= UNSIGNED(IR(1 downto 0)); --Write address
+            E <= '0';
+            ZE <= '0';
+        WHEN OUT_in => --Outputing register
+            IE <= "00";
+            WE <= '0';
+            RAE <= '1';
+            RBE <= '0';
+            op <= "0000";
+            RAA <= UNSIGNED(IR(1 downto 0)); --Read address A
+            E <= '1';
+            ZE <= '0';
+        WHEN NOT_in => --Not operation
+            IE <= "10";
+            WE <= '1';
+            RAE <= '1';
+            RBE <= '0';
+            op <= "0001";
+            RAA <= UNSIGNED(IR(1 downto 0)); --Read address A
+            WA <= UNSIGNED(IR(3 downto 2)); --Write address
+            E <= '0';
+            ZE <= '1';
+        WHEN LT => --Less than operation
+            IE <= "00";
+            WE <= '0';
+            RAE <= '1';
+            RBE <= '1';
+            op <= "1000";
+            RAA <= UNSIGNED(IR(1 downto 0)); --Read address A
+            RBA <= UNSIGNED(IR(3 downto 2)); --Write address
+            E <= '0';
+            ZE <= '1';
+        WHEN INC => -- Incrementation by nnnnn
+            IF incDecCounter < UNSIGNED(IR(3 downto 0)) then -- If incrementet less than nnnnn
+                IE <= "00";
+                WE <= '1';
+                RAE <= '1';
+                RBE <= '0';
+                op <= "0010";
+                RAA <= UNSIGNED(IR(5 downto 4)); --Read address A
+                WA <= UNSIGNED(IR(5 downto 4)); --Write address
+                E <= '0';
+                ZE <= '1';
+                state := state;
+            else --If incrementation finished go to start state
+                IE <= "00";
+                WE <= '0';
+                RAE <= '0';
+                RBE <= '0';
+                op <= "0000";
+                E <= '0';
+                ZE <= '0';
+                state := to_unsigned(0, 3);
+            END IF;
+             
+        WHEN DEC => -- Decremenation by nnnnn
+            IF incDecCounter < UNSIGNED(IR(3 downto 0)) then -- If decrementedtet less than nnnnn
+                IE <= "00";
+                WE <= '1';
+                RAE <= '1';
+                RBE <= '0';
+                op <= "0011";
+                RAA <= UNSIGNED(IR(5 downto 4)); --Read address A
+                WA <= UNSIGNED(IR(5 downto 4)); --Write address
+                E <= '0';
+                ZE <= '1';
+                state := state;
+            else  --If decrementation finished go to start state
+                IE <= "00";
+                WE <= '0';
+                RAE <= '0';
+                RBE <= '0';
+                op <= "0000";
+                E <= '0';
+                ZE <= '0';
+                state := to_unsigned(0, 3);
+            END IF;
+        WHEN ADD => -- Addition operation
+            IE <= "10";
+            WE <= '1';
+            RAE <= '1';
+            RBE <= '1';
+            op <= "0100";
+            RAA <= UNSIGNED(IR(3 downto 2)); --Read address A
+            RBA <= UNSIGNED(IR(1 downto 0)); --Read address B
             WA <= UNSIGNED(IR(5 downto 4)); --Write address
             E <= '0';
             ZE <= '1';
-            state := state;
-        else  --If decrementation finished go to start state
+        WHEN SUB => --Substraction operation
+            IE <= "10";
+            WE <= '1';
+            RAE <= '1';
+            RBE <= '1';
+            op <= "0101";
+            RAA <= UNSIGNED(IR(3 downto 2)); --Read address A
+            RBA <= UNSIGNED(IR(1 downto 0)); --Read address B
+            WA <= UNSIGNED(IR(5 downto 4)); --Write address
+            E <= '0';
+            ZE <= '1';
+        WHEN AND_in => -- And operation
+            IE <= "10";
+            WE <= '1';
+            RAE <= '1';
+            RBE <= '1';
+            op <= "0110";
+            RAA <= UNSIGNED(IR(3 downto 2)); --Read address A
+            RBA <= UNSIGNED(IR(1 downto 0)); --Read address B
+            WA <= UNSIGNED(IR(5 downto 4)); --Write address
+            E <= '0';
+            ZE <= '1';
+        WHEN OR_in => -- OR operation
+            IE <= "10";
+            WE <= '1';
+            RAE <= '1';
+            RBE <= '1';
+            op <= "0111";
+            RAA <= UNSIGNED(IR(3 downto 2)); --Read address A
+            RBA <= UNSIGNED(IR(1 downto 0)); --Read address B
+            WA <= UNSIGNED(IR(5 downto 4)); --Write address
+            E <= '0';
+            ZE <= '1';
+        WHEN MOV_2 => --Move value from nnnnn instruction
+            IE <= "00";
+            WE <= '1';
+            WA <= UNSIGNED(IR(5 downto 4)); --Write address
+            RAE <= '0';
+            RBE <= '0';
+            op <= "0000";
+            E <= '0';
+            ZE <= '0';
+        WHEN OTHERS => --If others => HALT
             IE <= "00";
             WE <= '0';
             RAE <= '0';
@@ -224,76 +295,14 @@ WHEN 3 => --decode/execute state
             op <= "0000";
             E <= '0';
             ZE <= '0';
-            state := to_unsigned(0, 3);
+        END CASE;
+        if (IR /= INC and IR /= DEC) THEN
+            state := to_unsigned(0, 3); -- go to next state if not performing incrementation or decremantation
         END IF;
-    WHEN ADD => -- Addition operation
-        IE <= "10";
-        WE <= '1';
-        RAE <= '1';
-        RBE <= '1';
-        op <= "0100";
-        RAA <= UNSIGNED(IR(3 downto 2)); --Read address A
-        RBA <= UNSIGNED(IR(1 downto 0)); --Read address B
-        WA <= UNSIGNED(IR(5 downto 4)); --Write address
-        E <= '0';
-        ZE <= '1';
-    WHEN SUB => --Substraction operation
-        IE <= "10";
-        WE <= '1';
-        RAE <= '1';
-        RBE <= '1';
-        op <= "0101";
-        RAA <= UNSIGNED(IR(3 downto 2)); --Read address A
-        RBA <= UNSIGNED(IR(1 downto 0)); --Read address B
-        WA <= UNSIGNED(IR(5 downto 4)); --Write address
-        E <= '0';
-        ZE <= '1';
-    WHEN AND_in => -- And operation
-        IE <= "10";
-        WE <= '1';
-        RAE <= '1';
-        RBE <= '1';
-        op <= "0110";
-        RAA <= UNSIGNED(IR(3 downto 2)); --Read address A
-        RBA <= UNSIGNED(IR(1 downto 0)); --Read address B
-        WA <= UNSIGNED(IR(5 downto 4)); --Write address
-        E <= '0';
-        ZE <= '1';
-    WHEN OR_in => -- OR operation
-        IE <= "10";
-        WE <= '1';
-        RAE <= '1';
-        RBE <= '1';
-        op <= "0111";
-        RAA <= UNSIGNED(IR(3 downto 2)); --Read address A
-        RBA <= UNSIGNED(IR(1 downto 0)); --Read address B
-        WA <= UNSIGNED(IR(5 downto 4)); --Write address
-        E <= '0';
-        ZE <= '1';
-    WHEN MOV_2 => --Move value from nnnnn instruction
-        IE <= "00";
-        WE <= '1';
-        WA <= UNSIGNED(IR(5 downto 4)); --Write address
-        RAE <= '0';
-        RBE <= '0';
-        op <= "0000";
-        E <= '0';
-        ZE <= '0';
-    WHEN OTHERS => --If others => HALT
-        IE <= "00";
-        WE <= '0';
-        RAE <= '0';
-        RBE <= '0';
-        op <= "0000";
-        E <= '0';
-        ZE <= '0';
+    WHEN OTHERS =>
+        state := to_unsigned(0, 3);
     END CASE;
-    if (IR /= INC and IR /= DEC) THEN
-        state := to_unsigned(0, 3); -- go to next state if not performing incrementation or decremantation
-    END IF;
-WHEN OTHERS =>
-    state := to_unsigned(0, 3);
-END CASE;
 
+end if;
 end process;
 end Behavioral;

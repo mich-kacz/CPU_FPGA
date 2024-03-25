@@ -1,7 +1,7 @@
-Running: xsim.dir/CE869_CPU_SYS_tb_behav/xsimk.exe -simmode gui -wdb CE869_CPU_SYS_tb_behav.wdb -simrunnum 0 -socket 52872
+Running: xsim.dir/CE869_CPU_SYS_tb_behav/xsimk.exe -simmode gui -wdb CE869_CPU_SYS_tb_behav.wdb -simrunnum 0 -socket 49202
 Design successfully loaded
-Design Loading Memory Usage: 8156 KB (Peak: 8156 KB)
-Design Loading CPU Usage: 15 ms
+Design Loading Memory Usage: 7836 KB (Peak: 7836 KB)
+Design Loading CPU Usage: 46 ms
 Simulation completed
-Simulation Memory Usage: 8704 KB (Peak: 8704 KB)
-Simulation CPU Usage: 46 ms
+Simulation Memory Usage: 8364 KB (Peak: 8364 KB)
+Simulation CPU Usage: 327 ms

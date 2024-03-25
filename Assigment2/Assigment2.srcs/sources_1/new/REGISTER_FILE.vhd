@@ -70,8 +70,10 @@ begin
 --Writing to register
 process(clk)
 begin
-if(WE = '1') then
-memory(TO_INTEGER(WA)) <= input;
+if rising_edge(clk) then
+    if(WE = '1') then
+    memory(TO_INTEGER(WA)) <= input;
+    end if;
 end if;
 end process;
 

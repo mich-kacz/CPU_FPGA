@@ -47,9 +47,10 @@ architecture Behavioral of IR_REG is
 begin
 process(clk) begin
 
-if(IRLoad='1') THEN
-    IR <= D; -- Copies location of instruction into IR
+if rising_edge(clk) then
+    if(IRLoad='1') THEN
+        IR <= D; -- Copies location of instruction into IR
+    end if;
 end if;
-
 end process;
 end Behavioral;

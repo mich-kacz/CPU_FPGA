@@ -70,6 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 5
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -114,8 +115,6 @@ read_xdc M:/pc/desktop/HighLevelLogic/Assigment2/Basys-3-Master.xdc
 set_property used_in_implementation false [get_files M:/pc/desktop/HighLevelLogic/Assigment2/Basys-3-Master.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
-
-read_checkpoint -auto_incremental -incremental C:/Users/mk23561/Assigment2/Assigment2.srcs/utils_1/imports/synth_1/CE869_CPU_SYS.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

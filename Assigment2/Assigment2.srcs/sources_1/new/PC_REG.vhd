@@ -50,19 +50,19 @@ signal counter : unsigned (3 downto 0) := (OTHERS => '0');
 begin
 process(clk)
 begin
-
-if(PCLoad = '1') then --If enable PC load value from input and increment next PC state
-    PC <= IR_in;
-    counter <= IR_in;
-    PC_next <= IR_in + 1;
-elsif(reset='1') then --If reset true then PC equals 0
-    PC <= "0000";
-    counter <= "0000";
-    PC_next <= "0001";
-else --Else program counter is not changing its state
-    PC <= counter;
-    PC_next <= counter + 1;
+if rising_edge(clk) then
+    if(PCLoad = '1') then --If enable PC load value from input and increment next PC state
+        PC <= IR_in;
+        counter <= IR_in;
+        PC_next <= IR_in + 1;
+    elsif(reset='1') then --If reset true then PC equals 0
+        PC <= "0000";
+        counter <= "0000";
+        PC_next <= "0001";
+    else --Else program counter is not changing its state
+        PC <= counter;
+        PC_next <= counter + 1;
+    end if;
 end if;
-
 end process;
 end Behavioral;
